@@ -6,7 +6,7 @@ using UnityEngine.SceneManagement;
 
 public class Enemy : MonoBehaviour
 {
-    [SerializeField] private float _moveSpeed = 0.05f;
+    [SerializeField] private float _moveSpeed = 3f;
     private Rigidbody2D _rb2D;
 
     private float _maxXPosition;
@@ -18,7 +18,6 @@ public class Enemy : MonoBehaviour
     private float _maxTimeToTurn = 12.5f;
 
     [SerializeField] private LayerMask _groundLayerMask;
-    [SerializeField] private LayerMask _playerLayerMask;
 
     private void Start()
     {
