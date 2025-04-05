@@ -17,7 +17,6 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private float overlapRadius = 0.05f;
 
     private InputAction _movement;
-    private InputAction _jump;
     private PlayerInput _playerActions;
 
     private bool _isGrounded = false;
@@ -40,10 +39,9 @@ public class PlayerMovement : MonoBehaviour
 
     private void Jump(InputAction.CallbackContext context)
     {
-        Debug.Log("Is not Grounded");
+        Debug.Log($"_IsGrounded: {_isGrounded}");
         if (_isGrounded)
         {
-            Debug.Log(_isGrounded);
             _rb.AddForce(Vector2.up * _jumpForce, ForceMode2D.Impulse);
         }
     }
