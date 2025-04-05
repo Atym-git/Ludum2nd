@@ -12,11 +12,18 @@ public class KeyItem : MonoBehaviour
 
     private PlayerInput _playerActions;
 
+    //Equipment items
+    private float _equipmentDamage;
+
+    private float _equipmentHealth;
+
     //Key item
     [SerializeField] private GameObject _affectedObject;
     private TextMeshProUGUI _itemTMP;
 
     [SerializeField] private string _TMPValue;
+
+    private PlayerCombatSystem _playerCombatSystem;
 
     private void Start()
     {
@@ -37,8 +44,13 @@ public class KeyItem : MonoBehaviour
         if (_isPlayerInsideTrigger)
         {
             _isPicked = true;
+            _playerCombatSystem.WeaponEquipped(_equipmentDamage);
+            _playerCombatSystem.ArmorEquipped(_equipmentHealth);
+            if (_affectedObject != null)
+            {
+                Destroy(_affectedObject);
+            }
             Destroy(gameObject);
-            Destroy(_affectedObject);
         }
     }
 

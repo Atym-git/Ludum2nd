@@ -12,7 +12,7 @@ public class KillingFloor : MonoBehaviour
         if (collision.gameObject.GetComponent<PlayerMovement>())
         {
             //TODO : Play death floor animation
-            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+            CheckPointManager.BackToCheckPoint();
         }
     }
 }
