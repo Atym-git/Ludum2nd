@@ -9,7 +9,8 @@ public class PlayerCombatSystem : ACombatSystem
     [SerializeField] private float _maxHealth = 35f;
     private float _currHealth;
 
-    [SerializeField] private float _damage;
+    [SerializeField] private float _basicDamage = 10f;
+    private float _damage;
 
     public static PlayerCombatSystem Instance { get; private set; }
 
@@ -17,9 +18,12 @@ public class PlayerCombatSystem : ACombatSystem
 
     private EnemyCombatSystem _enemyCombatSystem;
 
+    private bool _isWeaponEquipped = false;
+
     private void Start()
     {
         _currHealth = _maxHealth;
+        _damage = _basicDamage;
         Instance = this;
     }
 
@@ -38,6 +42,17 @@ public class PlayerCombatSystem : ACombatSystem
     public override bool IsAlive()
     {
         return _currHealth > 0;
+    }
+
+    public void WeaponEquipped(float damage)
+    {
+        _damage = _basicDamage + damage;
+    }
+
+    public void ArmorEquipped(float health)
+    {
+        _maxHealth += health;
+        _currHealth += health;
     }
 
     public override void Attack()
@@ -70,5 +85,4 @@ public class PlayerCombatSystem : ACombatSystem
             _isEnemyInAttackRange = false;
         }
     }
-
 }
