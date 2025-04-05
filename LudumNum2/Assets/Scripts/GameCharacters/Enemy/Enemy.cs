@@ -33,10 +33,6 @@ public class Enemy : MonoBehaviour
             _maxXPosition = collision.transform.position.x + ((collision.transform.lossyScale.x - 1) / 2);
             _minXPosition = collision.transform.position.x - ((collision.transform.lossyScale.x - 1) / 2);
         }
-        if (collision.gameObject.GetComponent<PlayerMovement>())
-        {
-            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
-        }
     }
 
     private IEnumerator RandomTurn()
