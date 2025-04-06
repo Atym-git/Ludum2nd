@@ -5,7 +5,7 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-public class KeyItem : MonoBehaviour
+public class Item : MonoBehaviour
 {
     private bool _isPlayerInsideTrigger = false;
     private bool _isPicked = false;
@@ -13,21 +13,22 @@ public class KeyItem : MonoBehaviour
     private PlayerInput _playerActions;
 
     //Equipment items
-    private float _equipmentDamage;
+    public float equipmentDamage;
 
-    private float _equipmentHealth;
+    public float equipmentHealth;
 
     //Key item
-    [SerializeField] private GameObject _affectedObject;
+    public GameObject affectedObject;
     private TextMeshProUGUI _itemTMP;
 
     [SerializeField] private string _TMPValue;
 
-    private PlayerCombatSystem _playerCombatSystem;
+    [SerializeField] private PlayerCombatSystem _playerCombatSystem;
 
     private void Start()
     {
         _itemTMP = GetComponentInChildren<TextMeshProUGUI>();
+        _itemTMP.gameObject.SetActive(false);
         Bind();
         _itemTMP.text = _TMPValue;
     }
@@ -44,11 +45,12 @@ public class KeyItem : MonoBehaviour
         if (_isPlayerInsideTrigger)
         {
             _isPicked = true;
-            _playerCombatSystem.WeaponEquipped(_equipmentDamage);
-            _playerCombatSystem.ArmorEquipped(_equipmentHealth);
-            if (_affectedObject != null)
+            Debug.Log(equipmentDamage);
+            PlayerCombatSystem.Instance.WeaponEquipped(equipmentDamage);
+            PlayerCombatSystem.Instance.ArmorEquipped(equipmentHealth);
+            if (affectedObject != null)
             {
-                Destroy(_affectedObject);
+                Destroy(affectedObject);
             }
             Destroy(gameObject);
         }

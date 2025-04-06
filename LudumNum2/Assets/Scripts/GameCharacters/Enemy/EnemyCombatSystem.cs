@@ -13,6 +13,12 @@ public class EnemyCombatSystem : ACombatSystem
 
     private bool _isPlayerInAttackRange = false;
 
+    public EnemyCombatSystem(float maxHealth, float damage)
+    {
+        _maxHealth = maxHealth;
+        _damage = damage;
+    }
+
     private void Start()
     {
         _maxHealth = _currHealth;

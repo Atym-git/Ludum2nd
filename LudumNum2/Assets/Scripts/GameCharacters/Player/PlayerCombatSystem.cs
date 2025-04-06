@@ -10,7 +10,7 @@ public class PlayerCombatSystem : ACombatSystem
     private float _currHealth;
 
     [SerializeField] private float _basicDamage = 10f;
-    private float _damage;
+    [SerializeField] private float _damage;
 
     public static PlayerCombatSystem Instance { get; private set; }
 

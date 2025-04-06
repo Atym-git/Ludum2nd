@@ -4,9 +4,9 @@ using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class Enemy : MonoBehaviour
+public class EnemyMovement : MonoBehaviour
 {
-    [SerializeField] private float _moveSpeed = 3f;
+    [SerializeField] public float MoveSpeed = 3f;
     private Rigidbody2D _rb2D;
 
     private float _maxXPosition;
@@ -55,6 +55,6 @@ public class Enemy : MonoBehaviour
         {
             _direction *= -1;
         }
-        _rb2D.velocity = new Vector2(_moveSpeed * _direction, _rb2D.velocity.y);
+        _rb2D.velocity = new Vector2(MoveSpeed * _direction, _rb2D.velocity.y);
     }
 }

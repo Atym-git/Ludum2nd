@@ -39,7 +39,6 @@ public class PlayerMovement : MonoBehaviour
 
     private void Jump(InputAction.CallbackContext context)
     {
-        Debug.Log($"_IsGrounded: {_isGrounded}");
         if (_isGrounded)
         {
             _rb.AddForce(Vector2.up * _jumpForce, ForceMode2D.Impulse);
