@@ -6,10 +6,10 @@ using UnityEngine.SceneManagement;
 public class PlayerCombatSystem : ACombatSystem
 {
     [SerializeField] private float _maxHealth = 35f;
-    [SerializeField] private float _currHealth;
+    private float _currHealth;
 
     [SerializeField] private float _basicDamage = 10f;
-    [SerializeField] private float _damage;
+     private float _damage;
 
     //public static PlayerCombatSystem Instance { get; private set; }
 
@@ -18,7 +18,7 @@ public class PlayerCombatSystem : ACombatSystem
     private bool _isWeaponEquipped = false;
     private bool _isEnemyInAttackRange = false;
 
-    public bool hasKeyCard = false;
+    [HideInInspector] public bool hasKeyCard = false;
 
     private void Start()
     {
