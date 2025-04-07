@@ -16,7 +16,7 @@ public class BreakingWall : MonoBehaviour
 
     private string _wallText = "Press E to open a door";
 
-    private PlayerCombatSystem _playerCombatSystem;
+    [SerializeField] private PlayerCombatSystem _playerCombatSystem;
 
     private void Awake()
     {
@@ -37,16 +37,23 @@ public class BreakingWall : MonoBehaviour
     {
         if (_playerCombatSystem != null)
         {
+            Debug.Log("Inside Trigger" + _isInsideTrigger);
+            Debug.Log($"Player Combat System: {_playerCombatSystem}");
             if (_isInsideTrigger && _playerCombatSystem.hasKeyCard)
             {
+                Debug.Log($"Player Combat System: {_playerCombatSystem}");
                 Destroy(gameObject);
             }
         }
     }
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.TryGetComponent<PlayerCombatSystem>(out _playerCombatSystem))
+        if (collision.GetComponent<PlayerCombatSystem>())
         {
+            if (_playerCombatSystem == null)
+            {
+                _playerCombatSystem = collision.GetComponent<PlayerCombatSystem>();
+            }
             _isInsideTrigger = true;
             _wallTMP.gameObject.SetActive(true);
         }

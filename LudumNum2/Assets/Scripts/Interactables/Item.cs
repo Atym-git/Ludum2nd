@@ -45,7 +45,6 @@ public class Item : MonoBehaviour
         if (_isPlayerInsideTrigger)
         {
             _isPicked = true;
-            Debug.Log(equipmentDamage);
             _playerCombatSystem.WeaponEquipped(equipmentDamage);
             _playerCombatSystem.ArmorEquipped(equipmentHealth);
             _playerCombatSystem.hasKeyCard = isKeyCard;

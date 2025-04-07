@@ -58,22 +58,22 @@ public class EnemyCombatSystem : ACombatSystem
         yield return new WaitForSeconds(seconds);
     }
 
-    public override void OnTriggerEnter2D(Collider2D collision)
-    {
-        //if (collision.gameObject.GetComponent<PlayerCombatSystem>())
-        //{
-        //    _playerCombatSystem = collision.gameObject.GetComponent<PlayerCombatSystem>();
-        //    _isPlayerInAttackRange = true;
-        //}
-    }
+    //public override void OnTriggerEnter2D(Collider2D collision)
+    //{
+    //    //if (collision.gameObject.GetComponent<PlayerCombatSystem>())
+    //    //{
+    //    //    _playerCombatSystem = collision.gameObject.GetComponent<PlayerCombatSystem>();
+    //    //    _isPlayerInAttackRange = true;
+    //    //}
+    //}
 
-    public override void OnTriggerExit2D(Collider2D collision)
-    {
-        //if (collision.gameObject.GetComponent<PlayerCombatSystem>())
-        //{
-        //    _isPlayerInAttackRange = false;
-        //}
-    }
+    //public override void OnTriggerExit2D(Collider2D collision)
+    //{
+    //    //if (collision.gameObject.GetComponent<PlayerCombatSystem>())
+    //    //{
+    //    //    _isPlayerInAttackRange = false;
+    //    //}
+    //}
     private void OnCollisionEnter2D(Collision2D collision)
     {
         if (collision.gameObject.GetComponent<PlayerCombatSystem>())
