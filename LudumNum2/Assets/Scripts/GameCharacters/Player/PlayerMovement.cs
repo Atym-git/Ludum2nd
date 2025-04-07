@@ -11,6 +11,8 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private float _jumpForce;
 
     private Rigidbody2D _rb;
+    private SpriteRenderer _sr;
+    private Animator _animator;
 
     [SerializeField] private LayerMask groundLayerMask;
     [SerializeField] private Transform groundCheck;
@@ -20,10 +22,15 @@ public class PlayerMovement : MonoBehaviour
     private PlayerInput _playerActions;
 
     private bool _isGrounded = false;
+    private bool _srFlipX = false;
+
+    private bool _animIdle;
 
     private void Start()
     {
         _rb = GetComponent<Rigidbody2D>();
+        _sr = GetComponent<SpriteRenderer>();
+        _animator = GetComponent<Animator>();
         _playerActions = new PlayerInput();
         _playerActions.Enable();
         Bind();
@@ -55,9 +62,19 @@ public class PlayerMovement : MonoBehaviour
     private void FixedUpdate()
     {
         float horMovement = _movement.ReadValue<float>();
-        //Vector2 _movement2d = _movement.ReadValue<Vector2>().normalized;
+        //_srFlipX = horMovement < 0;
+        if (horMovement < 0)
+        {
+            _srFlipX = true;
+        }
+        else if (horMovement > 0)
+        {
+            _srFlipX = false;
+        }
+        _animIdle = horMovement == 0;
+        _animator.SetBool("IsIdle", _animIdle);
         _rb.velocity = new Vector2(horMovement * _moveSpeed, _rb.velocity.y);
-        //_rb.velocity = new Vector2(_movement2d.x, _movement2d.y) * _moveSpeed;
+        _sr.flipX = _srFlipX;
     }
 
     private void Update()

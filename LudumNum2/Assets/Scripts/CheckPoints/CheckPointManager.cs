@@ -13,21 +13,21 @@ public static class CheckPointManager
 
     public static void SerializeJson()
     {
-        if (DataService.SaveData("/player-stats.json", spawnPoints, EncryptionEnabled))
-        {
-            try
-            {
-                spawnPoints = DataService.LoadData<List<Transform>>("/player-stats.json", EncryptionEnabled);
-            }
-            catch (Exception e)
-            {
-                Debug.LogError($"Could not read file due to {e.Message} {e.StackTrace}");
-            }
-        }
-        else
-        {
-            Debug.LogError("Could not save file!");
-        }
+        //if (DataService.SaveData("/player-stats.json", spawnPoints, EncryptionEnabled))
+        //{
+        //    try
+        //    {
+        //        spawnPoints = DataService.LoadData<List<Transform>>("/player-stats.json", EncryptionEnabled);
+        //    }
+        //    catch (Exception e)
+        //    {
+        //        Debug.LogError($"Could not read file due to {e.Message} {e.StackTrace}");
+        //    }
+        //}
+        //else
+        //{
+        //    Debug.LogError("Could not save file!");
+        //}
     }
 
     public static void AddCheckPoint(Transform playerSpawnPoint)

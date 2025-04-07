@@ -1,0 +1,65 @@
+using JetBrains.Annotations;
+using System;
+using System.Collections;
+using System.Collections.Generic;
+using TMPro;
+using UnityEngine;
+using UnityEngine.InputSystem;
+
+public class BreakingWall : MonoBehaviour
+{
+    private PlayerInput _playerActions;
+
+    private bool _isInsideTrigger = false;
+
+    private TextMeshProUGUI _wallTMP;
+
+    private string _wallText = "Press E to open a door";
+
+    private PlayerCombatSystem _playerCombatSystem;
+
+    private void Start()
+    {
+        _wallTMP = GetComponentInChildren<TextMeshProUGUI>();
+        _wallTMP.text = _wallText;
+        _wallTMP.gameObject.SetActive(false);
+        Bind();
+    }
+
+    private void Bind()
+    {
+        _playerActions = new PlayerInput();
+        _playerActions.Enable();
+        _playerActions.Player.Interact.performed += BreakWall;
+    }
+
+    private void BreakWall(InputAction.CallbackContext context)
+    {
+        if  (_isInsideTrigger && _playerCombatSystem.hasKeyCard)
+        {
+            Destroy(gameObject);
+        }
+    }
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.GetComponent<PlayerCombatSystem>() != null)
+        {
+            _playerCombatSystem = collision.GetComponent<PlayerCombatSystem>();
+            _isInsideTrigger = true;
+            _wallTMP.gameObject.SetActive(true);
+        }
+    }
+    private void OnTriggerExit2D(Collider2D collision)
+    {
+        if (collision.GetComponent<PlayerCombatSystem>() != null)
+        {
+            _isInsideTrigger = false;
+            _wallTMP.gameObject.SetActive(false);
+        }
+    }
+    private void OnDestroy()
+    {
+        _playerActions.Disable();
+        _playerActions.Player.Interact.performed -= BreakWall;
+    }
+}

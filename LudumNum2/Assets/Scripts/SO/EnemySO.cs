@@ -23,6 +23,6 @@ public class EnemySO : APrefabInstance
 
         prefabInstance.GetComponent<SpriteRenderer>().sprite = EnemySprite;
         enemyMovement.MoveSpeed = EnemyMovementSpeed;
-        enemyCombat = new EnemyCombatSystem(EnemyDamage, EnemyHealth);
+        //enemyCombat = new EnemyCombatSystem(EnemyDamage, EnemyHealth);
     }
 }

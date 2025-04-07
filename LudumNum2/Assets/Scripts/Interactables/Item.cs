@@ -46,11 +46,11 @@ public class Item : MonoBehaviour
         {
             _isPicked = true;
             Debug.Log(equipmentDamage);
-            PlayerCombatSystem.Instance.WeaponEquipped(equipmentDamage);
-            PlayerCombatSystem.Instance.ArmorEquipped(equipmentHealth);
+            _playerCombatSystem.WeaponEquipped(equipmentDamage);
+            _playerCombatSystem.ArmorEquipped(equipmentHealth);
             if (affectedObject != null)
             {
-                Destroy(affectedObject);
+                _playerCombatSystem.hasKeyCard = true;
             }
             Destroy(gameObject);
         }
@@ -58,15 +58,16 @@ public class Item : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.GetComponent<PlayerMovement>())
+        if (collision.GetComponent<PlayerCombatSystem>())
         {
+            _playerCombatSystem = collision.GetComponent<PlayerCombatSystem>();
             _isPlayerInsideTrigger = true;
             _itemTMP.gameObject.SetActive(true);
         }
     }
     public virtual void OnTriggerExit2D(Collider2D collision)
     {
-        if (collision.GetComponent<PlayerMovement>())
+        if (collision.GetComponent<PlayerCombatSystem>())
         {
             _isPlayerInsideTrigger = false;
             _itemTMP.gameObject.SetActive(false);

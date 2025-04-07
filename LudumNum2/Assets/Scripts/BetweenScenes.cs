@@ -12,4 +12,8 @@ public class BetweenScenes : MonoBehaviour
             SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
         }
     }
+    public void RedoGame()
+    {
+        SceneManager.LoadScene(0);
+    }
 }

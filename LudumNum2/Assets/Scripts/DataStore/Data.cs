@@ -38,7 +38,7 @@ public static class CSVUtils
         using (StreamWriter writer = new(jsonFilePath)) ;
     }
 
-    [MenuItem("Json Tools/Read and parse CSV")]
+    //[MenuItem("Json Tools/Read and parse CSV")]
     public static void ReadCSV()
     {
         DataBase dataBase = new DataBase();
