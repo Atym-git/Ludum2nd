@@ -18,7 +18,7 @@ public class BreakingWall : MonoBehaviour
 
     private PlayerCombatSystem _playerCombatSystem;
 
-    private void Start()
+    private void Awake()
     {
         _wallTMP = GetComponentInChildren<TextMeshProUGUI>();
         _wallTMP.text = _wallText;
@@ -35,9 +35,12 @@ public class BreakingWall : MonoBehaviour
 
     private void BreakWall(InputAction.CallbackContext context)
     {
-        if  (_isInsideTrigger && _playerCombatSystem.hasKeyCard)
+        if (_playerCombatSystem != null)
         {
-            Destroy(gameObject);
+            if (_isInsideTrigger && _playerCombatSystem.hasKeyCard)
+            {
+                Destroy(gameObject);
+            }
         }
     }
     private void OnTriggerEnter2D(Collider2D collision)

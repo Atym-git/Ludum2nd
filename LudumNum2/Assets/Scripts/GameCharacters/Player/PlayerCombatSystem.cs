@@ -13,17 +13,21 @@ public class PlayerCombatSystem : ACombatSystem
 
     //public static PlayerCombatSystem Instance { get; private set; }
 
+    private Animator _animator;
     private EnemyCombatSystem _enemyCombatSystem;
 
     private bool _isWeaponEquipped = false;
-    private bool _isEnemyInAttackRange = false;
+    public bool isEnemyInAttackRange = false;
 
     [HideInInspector] public bool hasKeyCard = false;
+
+    private const string _animAttackName = "Attack";
 
     private void Start()
     {
         _currHealth = _maxHealth;
         _damage = _basicDamage;
+        _animator = GetComponent<Animator>();
         //Instance = this;
     }
 
@@ -57,40 +61,38 @@ public class PlayerCombatSystem : ACombatSystem
 
     public override void Attack()
     {
-        //TODO: Make attack animation with key event that tracks if you hit or not
-        //TODO: Animation's key causes event that starts MakeDamage
-        MakeDamage();
-    }
-
-    public override void MakeDamage()
-    {
-        if (_isEnemyInAttackRange)
+        if (isEnemyInAttackRange)
         {
             _enemyCombatSystem.TakeDamage(_damage);
         }
     }
 
+    public void AssignEnemyCombat(EnemyCombatSystem enemyCombat)
+    {
+        _enemyCombatSystem = enemyCombat;
+    }
+
     public override void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.gameObject.GetComponent<EnemyCombatSystem>())
-        {
-            _enemyCombatSystem = collision.gameObject.GetComponent<EnemyCombatSystem>();
-            _isEnemyInAttackRange = true;
-        }
+        //if (collision.gameObject.GetComponent<EnemyCombatSystem>())
+        //{
+        //    _enemyCombatSystem = collision.gameObject.GetComponent<EnemyCombatSystem>();
+        //    isEnemyInAttackRange = true;
+        //}
     }
 
     public override void OnTriggerExit2D(Collider2D collision)
     {
-        if (collision.gameObject.GetComponent<EnemyCombatSystem>())
-        {
-            _isEnemyInAttackRange = false;
-        }
+        //if (collision.gameObject.GetComponent<EnemyCombatSystem>())
+        //{
+        //    isEnemyInAttackRange = false;
+        //}
     }
     private void Update()
     {
-        if (_isEnemyInAttackRange)
+        if (Input.GetMouseButtonDown(0))
         {
-            Attack();
+            _animator.SetTrigger(_animAttackName);
         }
     }
 }

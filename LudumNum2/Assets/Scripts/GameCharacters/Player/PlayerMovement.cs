@@ -24,7 +24,11 @@ public class PlayerMovement : MonoBehaviour
     private bool _isGrounded = false;
     private bool _srFlipX = false;
 
+    private const string _animIdleName = "IsIdle";
+    private const string _animWalkingName = "IsWalking";
+
     private bool _animIdle;
+    private bool _animWalking;
 
     private void Start()
     {
@@ -72,7 +76,9 @@ public class PlayerMovement : MonoBehaviour
             _srFlipX = false;
         }
         _animIdle = horMovement == 0;
-        _animator.SetBool("IsIdle", _animIdle);
+        _animWalking = horMovement != 0;
+        _animator.SetBool(_animIdleName, _animIdle);
+        _animator.SetBool(_animWalkingName, _animWalking);
         _rb.velocity = new Vector2(horMovement * _moveSpeed, _rb.velocity.y);
         _sr.flipX = _srFlipX;
     }
