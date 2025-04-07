@@ -19,6 +19,7 @@ public class EnemyMovement : MonoBehaviour
 
     private SpriteRenderer _sr;
     private bool _srFlipX = false;
+    private bool _isChasing = false;
 
     [SerializeField] private LayerMask _groundLayerMask;
 
@@ -41,18 +42,29 @@ public class EnemyMovement : MonoBehaviour
 
     private IEnumerator RandomTurn()
     {
-        while (true)
+        while (!_isChasing)
         {
             float timeToTurn = Random.Range(_minTimeToTurn, _maxTimeToTurn);
             yield return new WaitForSeconds(timeToTurn);
             _direction *= -1;
             _srFlipX = !_srFlipX;
+            Debug.Log("Random Turn");
         }
     }
 
     private void FixedUpdate()
     {
         EnemyMove();
+    }
+    public void BeginPlayerChase(int direction)
+    {
+        _isChasing = true;
+        _direction = direction;
+    }
+    public void EndPlayerChase()
+    {
+        _isChasing = false;
+        _direction *= -1;
     }
     private void EnemyMove()
     {

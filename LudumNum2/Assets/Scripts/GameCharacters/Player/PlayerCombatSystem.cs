@@ -30,7 +30,6 @@ public class PlayerCombatSystem : ACombatSystem
     public override void TakeDamage(float damage)
     {
         _currHealth -= damage;
-        Debug.Log(damage);
         //Mathf.Lerp(_currHealth, 0, _maxHealth);
         if (!IsAlive())
         {

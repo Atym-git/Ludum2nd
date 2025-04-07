@@ -4,10 +4,10 @@ using UnityEngine;
 
 public class EnemyCombatSystem : ACombatSystem
 {
-    private float _maxHealth = 30f;
+    public float maxHealth = 30f;
     private float _currHealth;
 
-    private float _damage = 150f;
+    public float damage = 150f;
 
     private PlayerCombatSystem _playerCombatSystem;
 
@@ -23,13 +23,13 @@ public class EnemyCombatSystem : ACombatSystem
 
     private void Start()
     {
-        _maxHealth = _currHealth;
+        maxHealth = _currHealth;
     }
 
     public override void TakeDamage(float damage)
     {
         _currHealth -= damage;
-        Mathf.Lerp(_currHealth, 0, _maxHealth);
+        Mathf.Lerp(_currHealth, 0, maxHealth);
         if (!IsAlive())
         {
             //TODO: Play enemy death animation
@@ -59,8 +59,7 @@ public class EnemyCombatSystem : ACombatSystem
     {
         //if (_isPlayerInAttackRange)
         //{
-        Debug.Log(_damage);
-            _playerCombatSystem.TakeDamage(_damage);
+            _playerCombatSystem.TakeDamage(damage);
         //}
     }
 
