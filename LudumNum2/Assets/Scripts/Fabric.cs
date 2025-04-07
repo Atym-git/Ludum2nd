@@ -5,11 +5,11 @@ using UnityEngine;
 
 public class Fabric : MonoBehaviour
 {
-    private Object enemyPrefab;
-    private Object itemPrefab;
+    [SerializeField] private GameObject enemyPrefab;
+    [SerializeField] private GameObject itemPrefab;
 
-    private Transform[] enemyTransforms;
-    private Transform[] itemTransforms;
+    [SerializeField] private Transform[] enemyTransforms;
+    [SerializeField] private Transform[] itemTransforms;
 
     private EnemySO[] enemySOs;
     private ItemSO[] itemSOs;
@@ -17,16 +17,28 @@ public class Fabric : MonoBehaviour
     private void Start()
     {
         LoadResources();
+        for (int i = 0; i < enemyTransforms.Length; i++)
+        {
+            if (i == enemySOs.Length)
+            {
+                break;
+            }
+            InstantiateSO(enemySOs[i], enemyPrefab, enemyTransforms[i]);
+        }
+        for (int i = 0; i < itemTransforms.Length; i++)
+        {
+            if (i == itemSOs.Length)
+            {
+                break;
+            }
+            InstantiateSO(itemSOs[i], itemPrefab, itemTransforms[i]);
+        }
     }
 
-    private void InstantiateSOs(APrefabInstance[] SOs, GameObject prefab, Transform[] transforms, Sprite sprite, float damage,
-        float health, GameObject affectedGameObject)
-    {   
-        for (int i = 0; i < SOs.Length; i++)
-        {
-            GameObject instance = Instantiate(prefab, transforms[i]);
-            SOs[i].SetupInstance(instance);
-        }
+    private void InstantiateSO(APrefabInstance SOs, GameObject prefab, Transform transforms)
+    {
+        GameObject instance = Instantiate(prefab, transforms);
+        SOs.SetupInstance(instance);
     }
 
     private void LoadResources()

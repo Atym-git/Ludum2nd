@@ -9,7 +9,7 @@ public class ItemSO : APrefabInstance
     [field: SerializeField]
     public Sprite ItemSprite { get; private set; }
     [field: SerializeField]
-    public GameObject AffectedObject { get; private set; }
+    public bool IsKeyCard { get; private set; }
     [field: SerializeField]
     public float EquipmentDamage { get; private set; }
     [field: SerializeField]
@@ -20,10 +20,7 @@ public class ItemSO : APrefabInstance
         Item item = prefabInstance.GetComponent<Item>();
 
         prefabInstance.GetComponent<SpriteRenderer>().sprite = ItemSprite;
-        if (AffectedObject != null)
-        {
-            item.affectedObject = AffectedObject;
-        }
+        item.isKeyCard = IsKeyCard;
         item.equipmentDamage = EquipmentDamage;
         item.equipmentHealth = EquipmentHealth;
     }

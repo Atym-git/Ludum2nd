@@ -20,13 +20,25 @@ public class CubesPuzzle : MonoBehaviour
     }
     public void RotateCube(int cubeIndex)
     {
-        if (_cubesCurrRot[cubeIndex] <= 3)
+        if (_cubesCurrRot[cubeIndex] < 3)
         {
             _cubesCurrRot[cubeIndex]++;
         }
         else
         {
-            _cubesCurrRot[cubeIndex] = 3;
+            _cubesCurrRot[cubeIndex] = 0;
         }
+        IsPuzzleSolved();
+    }
+    private bool IsPuzzleSolved()
+    {
+        for (int i = 0; i < _cubesCurrRot.Length; i++)
+        {
+            if (_cubesCurrRot[i] != _cubesCorrectRot[i])
+            {
+                return false;
+            }
+        }
+        return true;
     }
 }

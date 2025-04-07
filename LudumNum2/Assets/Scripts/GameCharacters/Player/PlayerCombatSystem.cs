@@ -6,31 +6,34 @@ using UnityEngine.SceneManagement;
 public class PlayerCombatSystem : ACombatSystem
 {
     [SerializeField] private float _maxHealth = 35f;
-    [SerializeField] private float _currHealth;
+    private float _currHealth;
 
     [SerializeField] private float _basicDamage = 10f;
-    [SerializeField] private float _damage;
+     private float _damage;
 
     //public static PlayerCombatSystem Instance { get; private set; }
 
+    private Animator _animator;
     private EnemyCombatSystem _enemyCombatSystem;
 
     private bool _isWeaponEquipped = false;
-    private bool _isEnemyInAttackRange = false;
+    public bool isEnemyInAttackRange = false;
 
-    public bool hasKeyCard = false;
+    [HideInInspector] public bool hasKeyCard = false;
+
+    private const string _animAttackName = "Attack";
 
     private void Start()
     {
         _currHealth = _maxHealth;
         _damage = _basicDamage;
+        _animator = GetComponent<Animator>();
         //Instance = this;
     }
 
     public override void TakeDamage(float damage)
     {
         _currHealth -= damage;
-        Debug.Log(damage);
         //Mathf.Lerp(_currHealth, 0, _maxHealth);
         if (!IsAlive())
         {
@@ -58,40 +61,38 @@ public class PlayerCombatSystem : ACombatSystem
 
     public override void Attack()
     {
-        //TODO: Make attack animation with key event that tracks if you hit or not
-        //TODO: Animation's key causes event that starts MakeDamage
-        MakeDamage();
-    }
-
-    public override void MakeDamage()
-    {
-        if (_isEnemyInAttackRange)
+        if (isEnemyInAttackRange)
         {
             _enemyCombatSystem.TakeDamage(_damage);
         }
     }
 
+    public void AssignEnemyCombat(EnemyCombatSystem enemyCombat)
+    {
+        _enemyCombatSystem = enemyCombat;
+    }
+
     public override void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.gameObject.GetComponent<EnemyCombatSystem>())
-        {
-            _enemyCombatSystem = collision.gameObject.GetComponent<EnemyCombatSystem>();
-            _isEnemyInAttackRange = true;
-        }
+        //if (collision.gameObject.GetComponent<EnemyCombatSystem>())
+        //{
+        //    _enemyCombatSystem = collision.gameObject.GetComponent<EnemyCombatSystem>();
+        //    isEnemyInAttackRange = true;
+        //}
     }
 
     public override void OnTriggerExit2D(Collider2D collision)
     {
-        if (collision.gameObject.GetComponent<EnemyCombatSystem>())
-        {
-            _isEnemyInAttackRange = false;
-        }
+        //if (collision.gameObject.GetComponent<EnemyCombatSystem>())
+        //{
+        //    isEnemyInAttackRange = false;
+        //}
     }
     private void Update()
     {
-        if (_isEnemyInAttackRange)
+        if (Input.GetMouseButtonDown(0))
         {
-            Attack();
+            _animator.SetTrigger(_animAttackName);
         }
     }
 }
