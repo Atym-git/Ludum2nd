@@ -15,11 +15,13 @@ public class PlayerCombatSystem : ACombatSystem
 
     private Animator _animator;
     private EnemyCombatSystem _enemyCombatSystem;
+    private Breakables _breakables;
 
     private bool _isWeaponEquipped = false;
     public bool isEnemyInAttackRange = false;
+    public bool isBreakableInAttackRange = false;
 
-    [HideInInspector] public bool hasKeyCard = false;
+    public bool hasKeyCard = false;
 
     private const string _animAttackName = "Attack";
 
@@ -61,33 +63,20 @@ public class PlayerCombatSystem : ACombatSystem
 
     public override void Attack()
     {
+        Debug.Log($"isBreakableInAttackRange: {isBreakableInAttackRange}");
         if (isEnemyInAttackRange)
         {
             _enemyCombatSystem.TakeDamage(_damage);
         }
+        else if (isBreakableInAttackRange)
+        {
+            _breakables.BreakBreakables();
+        }
     }
 
-    public void AssignEnemyCombat(EnemyCombatSystem enemyCombat)
-    {
-        _enemyCombatSystem = enemyCombat;
-    }
+    public void AssignEnemyCombat(EnemyCombatSystem enemyCombat) => _enemyCombatSystem = enemyCombat;
+    public void AssignBreakables(Breakables breakables) => _breakables = breakables;
 
-    public override void OnTriggerEnter2D(Collider2D collision)
-    {
-        //if (collision.gameObject.GetComponent<EnemyCombatSystem>())
-        //{
-        //    _enemyCombatSystem = collision.gameObject.GetComponent<EnemyCombatSystem>();
-        //    isEnemyInAttackRange = true;
-        //}
-    }
-
-    public override void OnTriggerExit2D(Collider2D collision)
-    {
-        //if (collision.gameObject.GetComponent<EnemyCombatSystem>())
-        //{
-        //    isEnemyInAttackRange = false;
-        //}
-    }
     private void Update()
     {
         if (Input.GetMouseButtonDown(0))
@@ -95,4 +84,21 @@ public class PlayerCombatSystem : ACombatSystem
             _animator.SetTrigger(_animAttackName);
         }
     }
+
+    //public override void OnTriggerEnter2D(Collider2D collision)
+    //{
+    //    if (collision.gameObject.GetComponent<EnemyCombatSystem>())
+    //    {
+    //        _enemyCombatSystem = collision.gameObject.GetComponent<EnemyCombatSystem>();
+    //        isEnemyInAttackRange = true;
+    //    }
+    //}
+
+    //public override void OnTriggerExit2D(Collider2D collision)
+    //{
+    //    if (collision.gameObject.GetComponent<EnemyCombatSystem>())
+    //    {
+    //        isEnemyInAttackRange = false;
+    //    }
+    //}
 }

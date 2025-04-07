@@ -9,8 +9,4 @@ public abstract class ACombatSystem : MonoBehaviour
     public abstract bool IsAlive();
 
     public abstract void Attack();
-
-    public abstract void OnTriggerEnter2D(Collider2D collision);
-
-    public abstract void OnTriggerExit2D(Collider2D collision);
 }

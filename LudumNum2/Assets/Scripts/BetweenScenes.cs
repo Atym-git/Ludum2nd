@@ -16,4 +16,8 @@ public class BetweenScenes : MonoBehaviour
     {
         SceneManager.LoadScene(0);
     }
+    public void StartANewGame()
+    {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+    }
 }
