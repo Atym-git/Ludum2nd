@@ -14,7 +14,6 @@ public class KillingFloor : MonoBehaviour
         if (collision.TryGetComponent<PlayerCombatSystem>(out _combatSystem))
         {
             //TODO : Play death floor animation
-            Debug.Log("Player inside");
             StartCoroutine(Delay(0.5f));
             _combatSystem.TakeDamage(1000);
         }

@@ -23,7 +23,7 @@ public class Cube : MonoBehaviour
         _isCursorOnCube = true;
         if (Input.GetMouseButtonDown(0)) 
         {
-            transform.rotation = new Quaternion(_xAxisRot, 0, 0, 0);
+            transform.Rotate(_xAxisRot, 0, 0) ;
             _cubesPuzzle.RotateCube(_cubeIndex);
         }
     }
