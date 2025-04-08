@@ -41,10 +41,6 @@ public class EnemyMovement : MonoBehaviour
                 _minXPosition = collision.transform.position.x - ((collision.transform.lossyScale.x - 1) / 2);
             }
         }
-        //if (collision.gameObject.GetComponent<Rigidbody2D>() && !collision.gameObject.GetComponent<PlayerMovement>())
-        //{
-        //    _direction = -1;
-        //}
     }
 
     private IEnumerator RandomTurn()
@@ -55,7 +51,6 @@ public class EnemyMovement : MonoBehaviour
             yield return new WaitForSeconds(timeToTurn);
             _direction *= -1;
             _srFlipX = !_srFlipX;
-            Debug.Log("Random Turn");
         }
     }
 

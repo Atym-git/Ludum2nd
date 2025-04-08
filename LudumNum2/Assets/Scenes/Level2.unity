@@ -592,8 +592,8 @@ Transform:
   m_GameObject: {fileID: 275028772}
   serializedVersion: 2
   m_LocalRotation: {x: -0.08838155, y: 0.30584925, z: 0.028528033, w: 0.94753945}
-  m_LocalPosition: {x: 28.07, y: -11.92, z: 0.8}
-  m_LocalScale: {x: 0.7055864, y: 1.8288192, z: 1}
+  m_LocalPosition: {x: 28.13, y: -12.5, z: 0.89}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -836,7 +836,7 @@ GameObject:
   - component: {fileID: 520370017}
   - component: {fileID: 520370016}
   - component: {fileID: 520370015}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Box2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1861,6 +1861,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bc3627709b6a8904daa64c4cb502adc0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _wallText: Press E to open a door
   _playerCombatSystem: {fileID: 0}
 --- !u!1001 &713231411
 PrefabInstance:
@@ -2928,6 +2929,87 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
+--- !u!1001 &1057539235
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 319240443541925547, guid: a3afbc9831a2d674582b376a6413c540, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 770429108, guid: dbef1b68299165147abf64055bb5af50, type: 3}
+    - target: {fileID: 4658195550240990949, guid: a3afbc9831a2d674582b376a6413c540, type: 3}
+      propertyPath: m_Offset.x
+      value: -0.113797426
+      objectReference: {fileID: 0}
+    - target: {fileID: 4658195550240990949, guid: a3afbc9831a2d674582b376a6413c540, type: 3}
+      propertyPath: m_Offset.y
+      value: 0.114667416
+      objectReference: {fileID: 0}
+    - target: {fileID: 4658195550240990949, guid: a3afbc9831a2d674582b376a6413c540, type: 3}
+      propertyPath: m_SpriteTilingProperty.oldSize.x
+      value: 0.96
+      objectReference: {fileID: 0}
+    - target: {fileID: 4658195550240990949, guid: a3afbc9831a2d674582b376a6413c540, type: 3}
+      propertyPath: m_SpriteTilingProperty.oldSize.y
+      value: 0.49
+      objectReference: {fileID: 0}
+    - target: {fileID: 5363709136823582231, guid: a3afbc9831a2d674582b376a6413c540, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 7f7ff61c75a0bbb4499bf43bd0d5f303, type: 3}
+    - target: {fileID: 6108067804122246534, guid: a3afbc9831a2d674582b376a6413c540, type: 3}
+      propertyPath: m_Name
+      value: Note
+      objectReference: {fileID: 0}
+    - target: {fileID: 8745083522896960600, guid: a3afbc9831a2d674582b376a6413c540, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -18.28
+      objectReference: {fileID: 0}
+    - target: {fileID: 8745083522896960600, guid: a3afbc9831a2d674582b376a6413c540, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -9.51
+      objectReference: {fileID: 0}
+    - target: {fileID: 8745083522896960600, guid: a3afbc9831a2d674582b376a6413c540, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8745083522896960600, guid: a3afbc9831a2d674582b376a6413c540, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.9994502
+      objectReference: {fileID: 0}
+    - target: {fileID: 8745083522896960600, guid: a3afbc9831a2d674582b376a6413c540, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8745083522896960600, guid: a3afbc9831a2d674582b376a6413c540, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8745083522896960600, guid: a3afbc9831a2d674582b376a6413c540, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0.033155207
+      objectReference: {fileID: 0}
+    - target: {fileID: 8745083522896960600, guid: a3afbc9831a2d674582b376a6413c540, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8745083522896960600, guid: a3afbc9831a2d674582b376a6413c540, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8745083522896960600, guid: a3afbc9831a2d674582b376a6413c540, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 3.8
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: a3afbc9831a2d674582b376a6413c540, type: 3}
 --- !u!1001 &1071987775
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3045,6 +3127,43 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 818193656298343607, guid: 1e468289ff5790c4b8e8d2e20f6829d2, type: 3}
+      propertyPath: m_text
+      value: This game is still early access, and they don't have any companion mechanics
+      objectReference: {fileID: 0}
+    - target: {fileID: 1567268392460843931, guid: 1e468289ff5790c4b8e8d2e20f6829d2, type: 3}
+      propertyPath: m_text
+      value: "Thank you again and adi\xF3s amigo"
+      objectReference: {fileID: 0}
+    - target: {fileID: 2009816774281777380, guid: 1e468289ff5790c4b8e8d2e20f6829d2, type: 3}
+      propertyPath: m_text
+      value: "Sorry, I would like to go with you, but\u2026"
+      objectReference: {fileID: 0}
+    - target: {fileID: 2581101728100810741, guid: 1e468289ff5790c4b8e8d2e20f6829d2, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2763934796871795346, guid: 1e468289ff5790c4b8e8d2e20f6829d2, type: 3}
+      propertyPath: m_SpriteTilingProperty.oldSize.x
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 2763934796871795346, guid: 1e468289ff5790c4b8e8d2e20f6829d2, type: 3}
+      propertyPath: m_SpriteTilingProperty.oldSize.y
+      value: 10.8
+      objectReference: {fileID: 0}
+    - target: {fileID: 2841680762356863627, guid: 1e468289ff5790c4b8e8d2e20f6829d2, type: 3}
+      propertyPath: m_text
+      value: 'Are you from HQ? Thank god they remember about us! '
+      objectReference: {fileID: 0}
+    - target: {fileID: 4399809329320323953, guid: 1e468289ff5790c4b8e8d2e20f6829d2, type: 3}
+      propertyPath: m_text
+      value: Anyway, i already spent to much time talking and not escaping this mad
+        house
+      objectReference: {fileID: 0}
+    - target: {fileID: 5269843161970944247, guid: 1e468289ff5790c4b8e8d2e20f6829d2, type: 3}
+      propertyPath: m_text
+      value: Until they arrive, you have to go down, maybe there are someone left
+      objectReference: {fileID: 0}
     - target: {fileID: 5899758672908280707, guid: 1e468289ff5790c4b8e8d2e20f6829d2, type: 3}
       propertyPath: m_SortingOrder
       value: 1
@@ -3068,6 +3187,11 @@ PrefabInstance:
     - target: {fileID: 7918419030975060635, guid: 1e468289ff5790c4b8e8d2e20f6829d2, type: 3}
       propertyPath: m_Name
       value: DeadBody
+      objectReference: {fileID: 0}
+    - target: {fileID: 8307708787336318203, guid: 1e468289ff5790c4b8e8d2e20f6829d2, type: 3}
+      propertyPath: m_text
+      value: "Oh, that was close! Thanks pal. Wait\u2026 you are the face I don't
+        recognise\u2026"
       objectReference: {fileID: 0}
     - target: {fileID: 8850010395606829022, guid: 1e468289ff5790c4b8e8d2e20f6829d2, type: 3}
       propertyPath: m_LocalScale.x
@@ -3441,7 +3565,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: -0.08838155, y: 0.30584925, z: 0.028528033, w: 0.94753945}
   m_LocalPosition: {x: -16.58, y: 1.73, z: 29.83}
-  m_LocalScale: {x: 0.94900966, y: 1.0237731, z: 1}
+  m_LocalScale: {x: 1, y: 1.0237731, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -3765,7 +3889,7 @@ GameObject:
   - component: {fileID: 1278965248}
   - component: {fileID: 1278965247}
   - component: {fileID: 1278965246}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Box1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4383,7 +4507,7 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -2.2369614, y: 3.4239197}
+  m_Offset: {x: -1.252857, y: 3.4239197}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -4394,7 +4518,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 10.769585, y: 11.226109}
+  m_Size: {x: 12.737793, y: 11.226109}
   m_EdgeRadius: 0
 --- !u!1 &1542417518
 GameObject:
@@ -4916,7 +5040,7 @@ GameObject:
   - component: {fileID: 1829227905}
   - component: {fileID: 1829227904}
   - component: {fileID: 1829227903}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Box2 (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5314,6 +5438,87 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 818193656298343607, guid: 1e468289ff5790c4b8e8d2e20f6829d2, type: 3}
+      propertyPath: m_text
+      value: "*Out all of his life, you manage to extract only one useful memory*\r"
+      objectReference: {fileID: 0}
+    - target: {fileID: 818193656298343607, guid: 1e468289ff5790c4b8e8d2e20f6829d2, type: 3}
+      propertyPath: m_fontSizeBase
+      value: 0.3
+      objectReference: {fileID: 0}
+    - target: {fileID: 1289669512799419298, guid: 1e468289ff5790c4b8e8d2e20f6829d2, type: 3}
+      propertyPath: m_text
+      value: "*Almost everything- you notice a new formation- no, not a tumor\u2026
+        you are curious*"
+      objectReference: {fileID: 0}
+    - target: {fileID: 1289669512799419298, guid: 1e468289ff5790c4b8e8d2e20f6829d2, type: 3}
+      propertyPath: m_fontSizeBase
+      value: 0.3
+      objectReference: {fileID: 0}
+    - target: {fileID: 1567268392460843931, guid: 1e468289ff5790c4b8e8d2e20f6829d2, type: 3}
+      propertyPath: m_text
+      value: '*You take analyses- everything is fine and just as same as it used
+        to be before the teleportation*'
+      objectReference: {fileID: 0}
+    - target: {fileID: 1567268392460843931, guid: 1e468289ff5790c4b8e8d2e20f6829d2, type: 3}
+      propertyPath: m_fontSizeBase
+      value: 0.3
+      objectReference: {fileID: 0}
+    - target: {fileID: 2009816774281777380, guid: 1e468289ff5790c4b8e8d2e20f6829d2, type: 3}
+      propertyPath: m_text
+      value: '*You know that because he did- last 18 minutes of his life he spent,
+        remembering his past and regretting his decisions*'
+      objectReference: {fileID: 0}
+    - target: {fileID: 2009816774281777380, guid: 1e468289ff5790c4b8e8d2e20f6829d2, type: 3}
+      propertyPath: m_fontSizeBase
+      value: 0.3
+      objectReference: {fileID: 0}
+    - target: {fileID: 2763934796871795346, guid: 1e468289ff5790c4b8e8d2e20f6829d2, type: 3}
+      propertyPath: m_SpriteTilingProperty.oldSize.x
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 2763934796871795346, guid: 1e468289ff5790c4b8e8d2e20f6829d2, type: 3}
+      propertyPath: m_SpriteTilingProperty.oldSize.y
+      value: 10.8
+      objectReference: {fileID: 0}
+    - target: {fileID: 2795812786387366437, guid: 1e468289ff5790c4b8e8d2e20f6829d2, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2841680762356863627, guid: 1e468289ff5790c4b8e8d2e20f6829d2, type: 3}
+      propertyPath: m_text
+      value: '*Next moment, a yellow light flashing through the hallway*'
+      objectReference: {fileID: 0}
+    - target: {fileID: 2841680762356863627, guid: 1e468289ff5790c4b8e8d2e20f6829d2, type: 3}
+      propertyPath: m_fontSizeBase
+      value: 0.3
+      objectReference: {fileID: 0}
+    - target: {fileID: 4399809329320323953, guid: 1e468289ff5790c4b8e8d2e20f6829d2, type: 3}
+      propertyPath: m_text
+      value: '*You see the patient- Nelson Power. He is the first man teleported
+        ever*'
+      objectReference: {fileID: 0}
+    - target: {fileID: 4399809329320323953, guid: 1e468289ff5790c4b8e8d2e20f6829d2, type: 3}
+      propertyPath: m_fontSizeBase
+      value: 0.3
+      objectReference: {fileID: 0}
+    - target: {fileID: 4731319412348689786, guid: 1e468289ff5790c4b8e8d2e20f6829d2, type: 3}
+      propertyPath: m_fontSizeBase
+      value: 0.3
+      objectReference: {fileID: 0}
+    - target: {fileID: 5269843161970944247, guid: 1e468289ff5790c4b8e8d2e20f6829d2, type: 3}
+      propertyPath: m_text
+      value: '*This is doctor Edie- he died 1 hour and 43 minutes ago because of
+        internal blood'
+      objectReference: {fileID: 0}
+    - target: {fileID: 5269843161970944247, guid: 1e468289ff5790c4b8e8d2e20f6829d2, type: 3}
+      propertyPath: m_fontSizeBase
+      value: 0.3
+      objectReference: {fileID: 0}
+    - target: {fileID: 5863855596483528049, guid: 1e468289ff5790c4b8e8d2e20f6829d2, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5899758672908280707, guid: 1e468289ff5790c4b8e8d2e20f6829d2, type: 3}
       propertyPath: m_SortingOrder
       value: 1
@@ -5325,6 +5530,14 @@ PrefabInstance:
     - target: {fileID: 6138545323101992344, guid: 1e468289ff5790c4b8e8d2e20f6829d2, type: 3}
       propertyPath: m_SortingOrder
       value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6210226224507655612, guid: 1e468289ff5790c4b8e8d2e20f6829d2, type: 3}
+      propertyPath: m_text
+      value: "*What Have he brought? From the space between teleports\u2026 *"
+      objectReference: {fileID: 0}
+    - target: {fileID: 6210226224507655612, guid: 1e468289ff5790c4b8e8d2e20f6829d2, type: 3}
+      propertyPath: m_fontSizeBase
+      value: 0.3
       objectReference: {fileID: 0}
     - target: {fileID: 7026796315395221970, guid: 1e468289ff5790c4b8e8d2e20f6829d2, type: 3}
       propertyPath: m_LocalRotation.w
@@ -5345,6 +5558,14 @@ PrefabInstance:
     - target: {fileID: 7918419030975060635, guid: 1e468289ff5790c4b8e8d2e20f6829d2, type: 3}
       propertyPath: m_Name
       value: DeadBody (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 8307708787336318203, guid: 1e468289ff5790c4b8e8d2e20f6829d2, type: 3}
+      propertyPath: m_text
+      value: '*You prepare your device*'
+      objectReference: {fileID: 0}
+    - target: {fileID: 8307708787336318203, guid: 1e468289ff5790c4b8e8d2e20f6829d2, type: 3}
+      propertyPath: m_fontSizeBase
+      value: 0.3
       objectReference: {fileID: 0}
     - target: {fileID: 8850010395606829022, guid: 1e468289ff5790c4b8e8d2e20f6829d2, type: 3}
       propertyPath: m_LocalScale.x
@@ -5505,6 +5726,74 @@ Transform:
   - {fileID: 1778771565}
   - {fileID: 1545954729}
   - {fileID: 470102997}
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1977348313
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1977348316}
+  - component: {fileID: 1977348315}
+  - component: {fileID: 1977348314}
+  m_Layer: 0
+  m_Name: EventSystem
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1977348314
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1977348313}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4f231c4fb786f3946a6b90b886c48677, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_SendPointerHoverToParent: 1
+  m_HorizontalAxis: Horizontal
+  m_VerticalAxis: Vertical
+  m_SubmitButton: Submit
+  m_CancelButton: Cancel
+  m_InputActionsPerSecond: 10
+  m_RepeatDelay: 0.5
+  m_ForceModuleActive: 0
+--- !u!114 &1977348315
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1977348313}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 76c392e42b5098c458856cdf6ecaaaa1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_FirstSelected: {fileID: 0}
+  m_sendNavigationEvents: 1
+  m_DragThreshold: 10
+--- !u!4 &1977348316
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1977348313}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1979965586
@@ -5742,3 +6031,5 @@ SceneRoots:
   - {fileID: 669203025}
   - {fileID: 1950422628}
   - {fileID: 1944298247}
+  - {fileID: 1977348316}
+  - {fileID: 1057539235}
