@@ -8,12 +8,9 @@ public class NoteReader : MonoBehaviour
 {
     [SerializeField] private TextMeshProUGUI _helpingTMP;
 
-    [SerializeField] private TextMeshProUGUI _noteTMP;
-
     [SerializeField] private GameObject _notePanel;
 
     [SerializeField] private string _helpingTextValue;
-    [SerializeField] private string _noteTMPValue;
 
     private PlayerInput _playerActions;
 
@@ -21,8 +18,6 @@ public class NoteReader : MonoBehaviour
 
     private void Start()
     {
-        _noteTMP = GetComponentInChildren<TextMeshProUGUI>();
-        _noteTMP.gameObject.SetActive(false);
         Bind();
         _helpingTMP.text = _helpingTextValue;
     }
@@ -38,7 +33,6 @@ public class NoteReader : MonoBehaviour
     {
         if (_isInsideTrigger)
         {
-            _noteTMP.text = _noteTMPValue;
             _notePanel.SetActive(true);
         }
     }

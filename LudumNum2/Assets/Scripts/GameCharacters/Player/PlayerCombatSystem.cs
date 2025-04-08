@@ -9,9 +9,7 @@ public class PlayerCombatSystem : ACombatSystem
     private float _currHealth;
 
     [SerializeField] private float _basicDamage = 10f;
-     private float _damage;
-
-    //public static PlayerCombatSystem Instance { get; private set; }
+    private float _damage;
 
     private Animator _animator;
     private EnemyCombatSystem _enemyCombatSystem;
@@ -30,16 +28,13 @@ public class PlayerCombatSystem : ACombatSystem
         _currHealth = _maxHealth;
         _damage = _basicDamage;
         _animator = GetComponent<Animator>();
-        //Instance = this;
     }
 
     public override void TakeDamage(float damage)
     {
         _currHealth -= damage;
-        //Mathf.Lerp(_currHealth, 0, _maxHealth);
         if (!IsAlive())
         {
-            //TODO: Play player death animation
             _currHealth = _maxHealth;
             transform.position = CheckPointManager.BackToCheckPoint();
         }
@@ -63,7 +58,6 @@ public class PlayerCombatSystem : ACombatSystem
 
     public override void Attack()
     {
-        Debug.Log($"isBreakableInAttackRange: {isBreakableInAttackRange}");
         if (isEnemyInAttackRange)
         {
             _enemyCombatSystem.TakeDamage(_damage);
