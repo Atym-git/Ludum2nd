@@ -5,7 +5,7 @@ using UnityEngine;
 public class CubesPuzzle : MonoBehaviour
 {
     [SerializeField] private int[] _cubesCorrectRot;
-    private int[] _cubesCurrRot = { 0, 0, 0};
+    [SerializeField] private int[] _cubesCurrRot = { 0, 0, 0};
 
     [SerializeField] private int _firstCubeCorrectRot = 3;
     [SerializeField] private int _secondCubeCorrectRot = 2;

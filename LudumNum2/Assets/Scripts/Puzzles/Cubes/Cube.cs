@@ -6,7 +6,7 @@ public class Cube : MonoBehaviour
 {
     private int _cubeIndex;
 
-    private bool _isCursorOnCube = false;
+    [SerializeField] private bool _isCursorOnCube = false;
 
     private CubesPuzzle _cubesPuzzle;
 
@@ -21,14 +21,18 @@ public class Cube : MonoBehaviour
     private void OnMouseEnter()
     {
         _isCursorOnCube = true;
-        if (Input.GetMouseButtonDown(0)) 
-        {
-            transform.Rotate(_xAxisRot, 0, 0) ;
-            _cubesPuzzle.RotateCube(_cubeIndex);
-        }
+        
     }
     private void OnMouseExit()
     {
         _isCursorOnCube = false;
+    }
+    private void Update()
+    {
+        if (_isCursorOnCube && Input.GetMouseButtonDown(0))
+        {
+            transform.Rotate(_xAxisRot, 0, 0);
+            _cubesPuzzle.RotateCube(_cubeIndex);
+        }
     }
 }
