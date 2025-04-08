@@ -404,7 +404,7 @@ Camera:
   far clip plane: 1000
   field of view: 60
   orthographic: 1
-  orthographic size: 10
+  orthographic size: 8
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -1067,7 +1067,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bc3627709b6a8904daa64c4cb502adc0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _wallText: Press E to open a door
   _playerCombatSystem: {fileID: 0}
 --- !u!61 &717823120
 BoxCollider2D:
@@ -1177,7 +1176,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4772004941850947749, guid: 56a6c17857bf78944b308d70d55c079d, type: 3}
       propertyPath: m_Lens.OrthographicSize
-      value: 10
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 5460398286404274894, guid: 56a6c17857bf78944b308d70d55c079d, type: 3}
       propertyPath: m_Sprite
@@ -1750,7 +1749,7 @@ GameObject:
   - component: {fileID: 960573431}
   - component: {fileID: 960573434}
   - component: {fileID: 960573433}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: Box2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2042,7 +2041,7 @@ GameObject:
   - component: {fileID: 1012596972}
   - component: {fileID: 1012596975}
   - component: {fileID: 1012596974}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: Box1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3155,7 +3154,7 @@ GameObject:
   - component: {fileID: 1542767477}
   - component: {fileID: 1542767480}
   - component: {fileID: 1542767479}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: Box2 (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
