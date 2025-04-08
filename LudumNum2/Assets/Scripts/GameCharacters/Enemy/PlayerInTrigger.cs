@@ -20,9 +20,8 @@ public class PlayerInTrigger : MonoBehaviour
         {
             _lastEnterIndex++;
             int direction = Mathf.Clamp(Mathf.RoundToInt(collision.transform.position.x - transform.parent.transform.position.x), -1, 1);
-            //Mathf.Lerp(direction, -1, 1);
-            Debug.Log("Difference in positions: " + Mathf.Clamp(Mathf.RoundToInt(collision.transform.position.x - transform.parent.transform.position.x), -1, 1));
-            Debug.Log($"Chase direction: {direction}");
+            //Debug.Log("Difference in positions: " + Mathf.Clamp(Mathf.RoundToInt(collision.transform.position.x - transform.parent.transform.position.x), -1, 1));
+            //Debug.Log($"Chase direction: {direction}");
             _enemy.BeginPlayerChase(direction);
         }
     }

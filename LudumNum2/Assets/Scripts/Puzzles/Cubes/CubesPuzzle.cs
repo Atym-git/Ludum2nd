@@ -7,9 +7,7 @@ public class CubesPuzzle : MonoBehaviour
     [SerializeField] private int[] _cubesCorrectRot;
     [SerializeField] private int[] _cubesCurrRot = { 0, 0, 0};
 
-    [SerializeField] private int _firstCubeCorrectRot = 3;
-    [SerializeField] private int _secondCubeCorrectRot = 2;
-    [SerializeField] private int _thirdCubeCorrectRot = 1;
+    [SerializeField] private BreakingWall _affectedDoor;
 
     private void Start()
     {
@@ -39,6 +37,7 @@ public class CubesPuzzle : MonoBehaviour
                 return false;
             }
         }
+        _affectedDoor.PuzzleSolved();
         return true;
     }
 }

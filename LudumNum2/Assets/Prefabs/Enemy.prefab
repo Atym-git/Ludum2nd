@@ -78,12 +78,12 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 42db06e51241c904ebb767fc3934516f, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 53e3078879b10db4288a5c76fa3aaa1a, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 1, y: 2}
+  m_Size: {x: 0.56, y: 0.59}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
@@ -129,6 +129,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   MoveSpeed: 3
+  _maxXPosition: 0
+  _minXPosition: 0
   _groundLayerMask:
     serializedVersion: 2
     m_Bits: 64
@@ -145,6 +147,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxHealth: 30
+  _currHealth: 0
   damage: 150
 --- !u!70 &6001825213578249924
 CapsuleCollider2D:
@@ -178,8 +181,8 @@ CapsuleCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: -1.74}
-  m_Size: {x: 7, y: 6.8}
+  m_Offset: {x: -0.06306267, y: -0.39046335}
+  m_Size: {x: 4.6036263, y: 6.470275}
   m_Direction: 0
 --- !u!1 &5900585984783575901
 GameObject:
