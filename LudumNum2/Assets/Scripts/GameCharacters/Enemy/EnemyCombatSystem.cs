@@ -5,7 +5,7 @@ using UnityEngine;
 public class EnemyCombatSystem : ACombatSystem
 {
     public float maxHealth = 30f;
-    private float _currHealth;
+    [SerializeField] private float _currHealth;
 
     public float damage = 150f;
 
@@ -23,7 +23,7 @@ public class EnemyCombatSystem : ACombatSystem
 
     private void Start()
     {
-        maxHealth = _currHealth;
+        _currHealth = maxHealth;
     }
 
     public override void TakeDamage(float damage)
@@ -47,7 +47,10 @@ public class EnemyCombatSystem : ACombatSystem
         //TODO: Make attack animation with key event that tracks if you hit or not
         //TODO: Animation's key causes event that starts MakeDamage
         //StartCoroutine(AttackDelay(_attackDelay));
-        MakeDamage();
+        //if (_isPlayerInAttackRange)
+        //{
+            _playerCombatSystem.TakeDamage(damage);
+        //}
     }
 
     private IEnumerator AttackDelay(float seconds)
@@ -55,37 +58,29 @@ public class EnemyCombatSystem : ACombatSystem
         yield return new WaitForSeconds(seconds);
     }
 
-    public override void MakeDamage()
-    {
-        //if (_isPlayerInAttackRange)
-        //{
-            _playerCombatSystem.TakeDamage(damage);
-        //}
-    }
+    //public override void OnTriggerEnter2D(Collider2D collision)
+    //{
+    //    //if (collision.gameObject.GetComponent<PlayerCombatSystem>())
+    //    //{
+    //    //    _playerCombatSystem = collision.gameObject.GetComponent<PlayerCombatSystem>();
+    //    //    _isPlayerInAttackRange = true;
+    //    //}
+    //}
 
-    public override void OnTriggerEnter2D(Collider2D collision)
-    {
-        //if (collision.gameObject.GetComponent<PlayerCombatSystem>())
-        //{
-        //    _playerCombatSystem = collision.gameObject.GetComponent<PlayerCombatSystem>();
-        //    _isPlayerInAttackRange = true;
-        //}
-    }
-
-    public override void OnTriggerExit2D(Collider2D collision)
-    {
-        //if (collision.gameObject.GetComponent<PlayerCombatSystem>())
-        //{
-        //    _isPlayerInAttackRange = false;
-        //}
-    }
+    //public override void OnTriggerExit2D(Collider2D collision)
+    //{
+    //    //if (collision.gameObject.GetComponent<PlayerCombatSystem>())
+    //    //{
+    //    //    _isPlayerInAttackRange = false;
+    //    //}
+    //}
     private void OnCollisionEnter2D(Collision2D collision)
     {
         if (collision.gameObject.GetComponent<PlayerCombatSystem>())
         {
             //_isPlayerInAttackRange = true;
             _playerCombatSystem = collision.gameObject.GetComponent<PlayerCombatSystem>();
-            MakeDamage();
+            Attack();
         }
     }
     private void FixedUpdate()

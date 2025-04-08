@@ -18,7 +18,7 @@ public class Item : MonoBehaviour
     public float equipmentHealth;
 
     //Key item
-    public GameObject affectedObject;
+    public bool isKeyCard;
     private TextMeshProUGUI _itemTMP;
 
     [SerializeField] private string _TMPValue;
@@ -45,13 +45,9 @@ public class Item : MonoBehaviour
         if (_isPlayerInsideTrigger)
         {
             _isPicked = true;
-            Debug.Log(equipmentDamage);
             _playerCombatSystem.WeaponEquipped(equipmentDamage);
             _playerCombatSystem.ArmorEquipped(equipmentHealth);
-            if (affectedObject != null)
-            {
-                _playerCombatSystem.hasKeyCard = true;
-            }
+            _playerCombatSystem.hasKeyCard = isKeyCard;
             Destroy(gameObject);
         }
     }
