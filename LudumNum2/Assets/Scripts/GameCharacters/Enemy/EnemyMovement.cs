@@ -9,8 +9,8 @@ public class EnemyMovement : MonoBehaviour
     [SerializeField] public float MoveSpeed = 3f;
     private Rigidbody2D _rb2D;
 
-    private float _maxXPosition;
-    private float _minXPosition;
+    [SerializeField] private float _maxXPosition;
+    [SerializeField] private float _minXPosition;
 
     private int _direction = 1;
 
@@ -35,9 +35,16 @@ public class EnemyMovement : MonoBehaviour
         if (LayerMaskUtil.ContainsLayer(_groundLayerMask, collision.gameObject))
         {
             //(Scale - 1) / 2 = delta for max & min values
-            _maxXPosition = collision.transform.position.x + ((collision.transform.lossyScale.x - 1) / 2);
-            _minXPosition = collision.transform.position.x - ((collision.transform.lossyScale.x - 1) / 2);
+            if (_maxXPosition == 0 && _minXPosition == 0)
+            {
+                _maxXPosition = collision.transform.position.x + ((collision.transform.lossyScale.x - 1) / 2);
+                _minXPosition = collision.transform.position.x - ((collision.transform.lossyScale.x - 1) / 2);
+            }
         }
+        //if (collision.gameObject.GetComponent<Rigidbody2D>() && !collision.gameObject.GetComponent<PlayerMovement>())
+        //{
+        //    _direction = -1;
+        //}
     }
 
     private IEnumerator RandomTurn()
