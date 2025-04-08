@@ -84,21 +84,4 @@ public class PlayerCombatSystem : ACombatSystem
             _animator.SetTrigger(_animAttackName);
         }
     }
-
-    //public override void OnTriggerEnter2D(Collider2D collision)
-    //{
-    //    if (collision.gameObject.GetComponent<EnemyCombatSystem>())
-    //    {
-    //        _enemyCombatSystem = collision.gameObject.GetComponent<EnemyCombatSystem>();
-    //        isEnemyInAttackRange = true;
-    //    }
-    //}
-
-    //public override void OnTriggerExit2D(Collider2D collision)
-    //{
-    //    if (collision.gameObject.GetComponent<EnemyCombatSystem>())
-    //    {
-    //        isEnemyInAttackRange = false;
-    //    }
-    //}
 }

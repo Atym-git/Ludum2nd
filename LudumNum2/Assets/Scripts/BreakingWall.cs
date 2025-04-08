@@ -14,7 +14,7 @@ public class BreakingWall : MonoBehaviour
 
     private TextMeshProUGUI _wallTMP;
 
-    private string _wallText = "Press E to open a door";
+    [SerializeField] private string _wallText = "Press E to open a door";
 
     [SerializeField] private PlayerCombatSystem _playerCombatSystem;
 
@@ -37,14 +37,15 @@ public class BreakingWall : MonoBehaviour
     {
         if (_playerCombatSystem != null)
         {
-            Debug.Log("Inside Trigger" + _isInsideTrigger);
-            Debug.Log($"Player Combat System: {_playerCombatSystem}");
             if (_isInsideTrigger && _playerCombatSystem.hasKeyCard)
             {
-                Debug.Log($"Player Combat System: {_playerCombatSystem}");
                 Destroy(gameObject);
             }
         }
+    }
+    public void PuzzleSolved()
+    {
+        Destroy(gameObject);
     }
     private void OnTriggerEnter2D(Collider2D collision)
     {
