@@ -14,7 +14,7 @@ public class BreakingWall : MonoBehaviour
 
     private TextMeshProUGUI _wallTMP;
 
-    private string _wallText = "Press E to open a door";
+    [SerializeField] private string _wallText = "Press E to open a door";
 
     [SerializeField] private PlayerCombatSystem _playerCombatSystem;
 
