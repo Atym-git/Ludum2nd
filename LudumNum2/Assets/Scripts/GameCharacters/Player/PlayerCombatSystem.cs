@@ -12,12 +12,14 @@ public class PlayerCombatSystem : ACombatSystem
     private float _damage;
 
     private Animator _animator;
+    private SpriteRenderer _sr;
     private EnemyCombatSystem _enemyCombatSystem;
     private Breakables _breakables;
 
     private bool _isWeaponEquipped = false;
     public bool isEnemyInAttackRange = false;
     public bool isBreakableInAttackRange = false;
+    private bool isRightTrigger;
 
     public bool hasKeyCard = false;
 
@@ -28,6 +30,7 @@ public class PlayerCombatSystem : ACombatSystem
         _currHealth = _maxHealth;
         _damage = _basicDamage;
         _animator = GetComponent<Animator>();
+        _sr = GetComponent<SpriteRenderer>();
     }
 
     public override void TakeDamage(float damage)
@@ -58,6 +61,10 @@ public class PlayerCombatSystem : ACombatSystem
 
     public override void Attack()
     {
+        if (isRightTrigger != _sr.flipX)
+        {
+
+        }
         if (isEnemyInAttackRange)
         {
             _enemyCombatSystem.TakeDamage(_damage);
@@ -68,6 +75,7 @@ public class PlayerCombatSystem : ACombatSystem
         }
     }
 
+    public void AssignTrigger(bool isRightTrigger) => this.isRightTrigger = isRightTrigger;
     public void AssignEnemyCombat(EnemyCombatSystem enemyCombat) => _enemyCombatSystem = enemyCombat;
     public void AssignBreakables(Breakables breakables) => _breakables = breakables;
 

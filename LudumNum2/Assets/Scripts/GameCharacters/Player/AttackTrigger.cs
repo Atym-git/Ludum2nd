@@ -8,6 +8,8 @@ public class AttackTrigger : MonoBehaviour
     private PlayerCombatSystem _playerCombatSystem;
     private Breakables _breakables;
 
+    [SerializeField] private bool _isRightTrigger;
+
     private void Start()
     {
         _playerCombatSystem = transform.parent.GetComponent<PlayerCombatSystem>();
@@ -18,6 +20,7 @@ public class AttackTrigger : MonoBehaviour
         if (collision.gameObject.TryGetComponent<EnemyCombatSystem>(out _enemyCombatSystem))
         {
             _playerCombatSystem.AssignEnemyCombat(_enemyCombatSystem);
+            _playerCombatSystem.AssignTrigger(_isRightTrigger);
             _playerCombatSystem.isEnemyInAttackRange = true;
         }
         else if (collision.gameObject.TryGetComponent<Breakables>(out _breakables))

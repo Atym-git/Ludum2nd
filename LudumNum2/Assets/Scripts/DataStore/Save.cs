@@ -4,10 +4,6 @@ using UnityEngine;
 
 public class Save : MonoBehaviour
 {
-    //private void Start()
-    //{
-    //    Debug.Log(Application.persistentDataPath);
-    //}
 
     private void SaveCheckpoints()
     {

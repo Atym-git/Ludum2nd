@@ -46,10 +46,8 @@ public class Fabric : MonoBehaviour
         enemySOs = Resources.LoadAll("SO/EnemySO", typeof (EnemySO))
             .Cast<EnemySO>()
             .ToArray();
-        //Assets/Resources/SO/EnemySO
         itemSOs = Resources.LoadAll("SO/ItemSO", typeof(ItemSO))
             .Cast<ItemSO>()
             .ToArray();
-        //Assets/Resources/SO/ItemSO
     }
 }
