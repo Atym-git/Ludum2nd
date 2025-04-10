@@ -76,13 +76,21 @@ public class PlayerMovement : MonoBehaviour
         {
             _srFlipX = false;
         }
+        if (horMovement != 0)
+        {
+            SoundFXManager.SFXinstance.PlaySoundFXClip(_walkingAudioClip, transform, 1f);
+            _animWalking = true;
+        }
         _animIdle = horMovement == 0;
-        _animWalking = horMovement != 0;
-        _animator.SetBool(_animIdleName, _animIdle);
-        _animator.SetBool(_animWalkingName, _animWalking);
-        SoundFXManager.SFXinstance.PlaySoundFXClip(_walkingAudioClip, transform, 1f);
+        //_animWalking = horMovement != 0;
+        SetAnimatorBools();
         _rb.velocity = new Vector2(horMovement * _moveSpeed, _rb.velocity.y);
         _sr.flipX = _srFlipX;
+    }
+    private void SetAnimatorBools()
+    {
+        _animator.SetBool(_animIdleName, _animIdle);
+        _animator.SetBool(_animWalkingName, _animWalking);
     }
 
     private void Update()
