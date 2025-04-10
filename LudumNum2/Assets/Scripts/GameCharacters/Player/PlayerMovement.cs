@@ -13,6 +13,7 @@ public class PlayerMovement : MonoBehaviour
     private Rigidbody2D _rb;
     private SpriteRenderer _sr;
     private Animator _animator;
+    private AudioSource _walkingAudioSource;
 
     [SerializeField] private LayerMask groundLayerMask;
     [SerializeField] private Transform groundCheck;
@@ -34,12 +35,18 @@ public class PlayerMovement : MonoBehaviour
 
     private void Start()
     {
-        _rb = GetComponent<Rigidbody2D>();
-        _sr = GetComponent<SpriteRenderer>();
-        _animator = GetComponent<Animator>();
+        GetComponents();
         _playerActions = new PlayerInput();
         _playerActions.Enable();
         Bind();
+    }
+
+    private void GetComponents()
+    {
+        _rb = GetComponent<Rigidbody2D>();
+        _sr = GetComponent<SpriteRenderer>();
+        _animator = GetComponent<Animator>();
+        _walkingAudioSource = GetComponentInChildren<AudioSource>();
     }
 
     private void Bind()
@@ -76,13 +83,23 @@ public class PlayerMovement : MonoBehaviour
         {
             _srFlipX = false;
         }
-        if (horMovement != 0)
-        {
-            SoundFXManager.SFXinstance.PlaySoundFXClip(_walkingAudioClip, transform, 1f);
-            _animWalking = true;
-        }
         _animIdle = horMovement == 0;
-        //_animWalking = horMovement != 0;
+        _animWalking = horMovement != 0;
+        if (_animWalking)
+        {
+            //SoundFXManager.SFXinstance.PlaySoundFXClip(_walkingAudioClip, transform, 1f);
+            if (!_walkingAudioSource.isPlaying)
+            {
+                _walkingAudioSource.Play();
+            }
+        }
+        else
+        {
+            if (_walkingAudioSource.isPlaying)
+            {
+                _walkingAudioSource.Stop();
+            }
+        }
         SetAnimatorBools();
         _rb.velocity = new Vector2(horMovement * _moveSpeed, _rb.velocity.y);
         _sr.flipX = _srFlipX;
