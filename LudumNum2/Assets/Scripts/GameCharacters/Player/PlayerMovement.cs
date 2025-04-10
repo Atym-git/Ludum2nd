@@ -30,6 +30,8 @@ public class PlayerMovement : MonoBehaviour
     private bool _animIdle;
     private bool _animWalking;
 
+    [SerializeField] private AudioClip _walkingAudioClip;
+
     private void Start()
     {
         _rb = GetComponent<Rigidbody2D>();
@@ -38,7 +40,6 @@ public class PlayerMovement : MonoBehaviour
         _playerActions = new PlayerInput();
         _playerActions.Enable();
         Bind();
-        
     }
 
     private void Bind()
@@ -50,7 +51,6 @@ public class PlayerMovement : MonoBehaviour
 
     private void Jump(InputAction.CallbackContext context)
     {
-        Debug.Log($"Is Grounded: {_isGrounded}");
         if (_isGrounded)
         {
             _rb.AddForce(Vector2.up * _jumpForce, ForceMode2D.Impulse);
@@ -80,6 +80,7 @@ public class PlayerMovement : MonoBehaviour
         _animWalking = horMovement != 0;
         _animator.SetBool(_animIdleName, _animIdle);
         _animator.SetBool(_animWalkingName, _animWalking);
+        SoundFXManager.SFXinstance.PlaySoundFXClip(_walkingAudioClip, transform, 1f);
         _rb.velocity = new Vector2(horMovement * _moveSpeed, _rb.velocity.y);
         _sr.flipX = _srFlipX;
     }

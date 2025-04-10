@@ -1,7 +1,9 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class PlayerCombatSystem : ACombatSystem
 {
@@ -11,10 +13,14 @@ public class PlayerCombatSystem : ACombatSystem
     [SerializeField] private float _basicDamage = 10f;
     private float _damage;
 
+    [SerializeField] private KeyCode _attackKey = KeyCode.Q;
+
     private Animator _animator;
     private SpriteRenderer _sr;
     private EnemyCombatSystem _enemyCombatSystem;
     private Breakables _breakables;
+
+    [SerializeField] private GameObject _deathPanel;
 
     private bool _isWeaponEquipped = false;
     public bool isEnemyInAttackRange = false;
@@ -38,9 +44,18 @@ public class PlayerCombatSystem : ACombatSystem
         _currHealth -= damage;
         if (!IsAlive())
         {
-            _currHealth = _maxHealth;
-            transform.position = CheckPointManager.BackToCheckPoint();
+            Time.timeScale = 0f;
+            _deathPanel.SetActive(true);
+            //BackToCheckPoint();
         }
+    }
+
+    public void BackToCheckPoint()
+    {
+        transform.position = CheckPointManager.BackToCheckPoint();
+        Time.timeScale = 1f;
+        _deathPanel.SetActive(false);
+        _currHealth = _maxHealth;
     }
 
     public override bool IsAlive()
@@ -63,16 +78,23 @@ public class PlayerCombatSystem : ACombatSystem
     {
         if (isRightTrigger != _sr.flipX)
         {
-
+            if (isEnemyInAttackRange)
+            {
+                _enemyCombatSystem.TakeDamage(_damage);
+            }
+            else if (isBreakableInAttackRange)
+            {
+                _breakables.BreakBreakables();
+            }
         }
-        if (isEnemyInAttackRange)
-        {
-            _enemyCombatSystem.TakeDamage(_damage);
-        }
-        else if (isBreakableInAttackRange)
-        {
-            _breakables.BreakBreakables();
-        }
+        //if (isEnemyInAttackRange)
+        //{
+        //    _enemyCombatSystem.TakeDamage(_damage);
+        //}
+        //else if (isBreakableInAttackRange)
+        //{
+        //    _breakables.BreakBreakables();
+        //}
     }
 
     public void AssignTrigger(bool isRightTrigger) => this.isRightTrigger = isRightTrigger;
@@ -81,7 +103,7 @@ public class PlayerCombatSystem : ACombatSystem
 
     private void Update()
     {
-        if (Input.GetMouseButtonDown(0))
+        if (Input.GetKeyDown(_attackKey))
         {
             _animator.SetTrigger(_animAttackName);
         }
